@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Library\Domain\Book\Book" table="books">
+        <id name="id" type="string" column="id">
+            <generator strategy="NONE"/>
+        </id>
+        <field name="title" type="string" column="title"/>
+        <field name="status" type="string" column="status"/>
+        <one-to-many field="borrowings" target-entity="App\Library\Domain\Book\Borrowing" mapped-by="book" cascade="persist, remove"/>
+    </entity>
+</doctrine-mapping>

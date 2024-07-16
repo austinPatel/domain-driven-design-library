@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+        http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="App\Library\Domain\Book\Borrowing" table="borrowings">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+        <many-to-one field="book" target-entity="App\Library\Domain\Book\Book" inversed-by="borrowings">
+            <join-column name="book_id" referenced-column-name="id" nullable="false"/>
+        </many-to-one>
+        <field name="borrower" type="string" column="borrower"/>
+        <field name="checkoutDate" type="datetime" column="checkout_date"/>
+        <field name="checkinDate" type="datetime" column="checkin_date" nullable="true"/>
+    </entity>
+</doctrine-mapping>
